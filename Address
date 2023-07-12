@@ -1,0 +1,21 @@
+[adress relay]
+
+No.1 relay ON : 01 05 00 00 FF 00 8C 3A
+No.1 relay Off : 01 05 00 00 00 00 CD CA
+No.2 relay ON : 01 05 00 01 FF 00 DD FA 
+No.2 relay Off : 01 05 00 01 00 00 9C 0A 
+No.3 relay ON : 01 05 00 02 FF 00 2D FA
+No.3 relay Off : 01 05 00 02 00 00 6C 0A
+No.4 relay ON : 01 05 00 03 FF 00 7C 3A
+No.4 relay Off : 01 05 00 03 00 00 3D CA
+No.5 relay ON : 01 05 00 04 FF 00 CD FB
+No.5 relay Off : 01 05 00 04 00 00 8C 0B
+No.6 relay ON : 01 05 00 05 FF 00 9C 3B
+No.6 relay Off : 01 05 00 05 00 00 DD CB
+No.7 relay ON : 01 05 00 06 FF 00 6C 3B
+No.7 relay Off : 01 05 00 06 00 00 2D CB
+No.8 relay ON : 01 05 00 07 FF 00 3D FB
+No.8 relay Off : 01 05 00 07 00 00 7C 0B
+
+Semua relay on : 01 0F 00 00 00 08 01 FF BE D5
+Semua relay off : 01 0F 00 00 00 08 01 00 FE 95

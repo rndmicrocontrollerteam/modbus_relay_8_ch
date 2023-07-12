@@ -1,12 +1,11 @@
 #include <SoftwareSerial.h>
 
-//#define RX D3
-//#define TX D4
-#define RS485Control D2
+//#define RX D2
+//#define TX D1
 #define RS485Transmit HIGH
 #define RS485Receive LOW
 
-SoftwareSerial RS485Serial(D3, D4);
+SoftwareSerial RS485Serial(D2, D1);
 
 byte DeviceID = 0x01;
 
@@ -36,18 +35,15 @@ byte OFF_RELAY_08[8] = {DeviceID,0x05,0x00,0x07,0x00,0x00,0x7C,0x0B};
 
 
 byte ON_ALL_RELAY[10]  = {DeviceID,0x0F,0x00,0x00,0x00,0x08,0x01,0xFF,0xBE,0xD5};
-byte OFF_ALL_RELAY[10] = {DeviceID,0x0F,0x00,0x00,0x00,0x08,0x01,0xFF,0xFE,0x95};
+byte OFF_ALL_RELAY[10] = {DeviceID,0x0F,0x00,0x00,0x00,0x08,0x01,0x00,0xFE,0x95};
 
 
 void setup() {
-//  pinMode(RS485Control, OUTPUT);
-//  digitalWrite(RS485Control, LOW);
   Serial.begin(9600);
   RS485Serial.begin(9600);
 }
 
 void loop() {
-//  digitalWrite(RS485Control, HIGH);
   RS485Serial.write(ON_RELAY_01,8);
   delay(500);
   RS485Serial.write(ON_RELAY_02,8);
@@ -84,7 +80,7 @@ void loop() {
 
   RS485Serial.write(ON_ALL_RELAY,10);
   delay(1000);
-//  RS485Serial.write(OFF_ALL_RELAY,10);
-//  delay(1000);
+  RS485Serial.write(OFF_ALL_RELAY,10);
+  delay(1000);
   
 }
