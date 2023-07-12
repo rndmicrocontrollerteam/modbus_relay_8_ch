@@ -1,0 +1,90 @@
+#include <SoftwareSerial.h>
+
+//#define RX D3
+//#define TX D4
+#define RS485Control D2
+#define RS485Transmit HIGH
+#define RS485Receive LOW
+
+SoftwareSerial RS485Serial(D3, D4);
+
+byte DeviceID = 0x01;
+
+byte ON_RELAY_01[8]  = {0x01,0x05,0x00,0x00,0xFF,0x00,0x8C,0x3A};
+byte OFF_RELAY_01[8] = {0x01,0x05,0x00,0x00,0x00,0x00,0xCD,0xCA};
+
+byte ON_RELAY_02[8]  = {DeviceID,0x05,0x00,0x01,0xFF,0x00,0xDD,0xFA};
+byte OFF_RELAY_02[8] = {DeviceID,0x05,0x00,0x01,0x00,0x00,0x9C,0x0A};
+
+byte ON_RELAY_03[8]  = {DeviceID,0x05,0x00,0x02,0xFF,0x00,0x2D,0xFA};
+byte OFF_RELAY_03[8] = {DeviceID,0x05,0x00,0x02,0x00,0x00,0x6C,0x0A};
+
+byte ON_RELAY_04[8]  = {DeviceID,0x05,0x00,0x03,0xFF,0x00,0x7C,0x3A};
+byte OFF_RELAY_04[8] = {DeviceID,0x05,0x00,0x03,0x00,0x00,0x3D,0xCA};
+
+byte ON_RELAY_05[8]  = {DeviceID,0x05,0x00,0x04,0xFF,0x00,0xCD,0xFB};
+byte OFF_RELAY_05[8] = {DeviceID,0x05,0x00,0x04,0x00,0x00,0x8C,0x0B};
+
+byte ON_RELAY_06[8]  = {DeviceID,0x05,0x00,0x05,0xFF,0x00,0x9C,0x3B};
+byte OFF_RELAY_06[8] = {DeviceID,0x05,0x00,0x05,0x00,0x00,0xDD,0xCB};
+
+byte ON_RELAY_07[8]  = {DeviceID,0x05,0x00,0x06,0xFF,0x00,0x6C,0x3B};
+byte OFF_RELAY_07[8] = {DeviceID,0x05,0x00,0x06,0x00,0x00,0x2D,0xCB};
+
+byte ON_RELAY_08[8]  = {DeviceID,0x05,0x00,0x07,0xFF,0x00,0x3D,0xFB};
+byte OFF_RELAY_08[8] = {DeviceID,0x05,0x00,0x07,0x00,0x00,0x7C,0x0B};
+
+
+byte ON_ALL_RELAY[10]  = {DeviceID,0x0F,0x00,0x00,0x00,0x08,0x01,0xFF,0xBE,0xD5};
+byte OFF_ALL_RELAY[10] = {DeviceID,0x0F,0x00,0x00,0x00,0x08,0x01,0xFF,0xFE,0x95};
+
+
+void setup() {
+//  pinMode(RS485Control, OUTPUT);
+//  digitalWrite(RS485Control, LOW);
+  Serial.begin(9600);
+  RS485Serial.begin(9600);
+}
+
+void loop() {
+//  digitalWrite(RS485Control, HIGH);
+  RS485Serial.write(ON_RELAY_01,8);
+  delay(500);
+  RS485Serial.write(ON_RELAY_02,8);
+  delay(500);
+  RS485Serial.write(ON_RELAY_03,8);
+  delay(500);
+  RS485Serial.write(ON_RELAY_04,8);
+  delay(500);
+  RS485Serial.write(ON_RELAY_05,8);
+  delay(500);
+  RS485Serial.write(ON_RELAY_06,8);
+  delay(500);
+  RS485Serial.write(ON_RELAY_07,8);
+  delay(500);
+  RS485Serial.write(ON_RELAY_08,8);
+  delay(500);
+
+  RS485Serial.write(OFF_RELAY_01,8);
+  delay(500);
+  RS485Serial.write(OFF_RELAY_02,8);
+  delay(500);
+  RS485Serial.write(OFF_RELAY_03,8);
+  delay(500);
+  RS485Serial.write(OFF_RELAY_04,8);
+  delay(500);
+  RS485Serial.write(OFF_RELAY_05,8);
+  delay(500);
+  RS485Serial.write(OFF_RELAY_06,8);
+  delay(500);
+  RS485Serial.write(OFF_RELAY_07,8);
+  delay(500);
+  RS485Serial.write(OFF_RELAY_08,8);
+  delay(500);
+
+  RS485Serial.write(ON_ALL_RELAY,10);
+  delay(1000);
+//  RS485Serial.write(OFF_ALL_RELAY,10);
+//  delay(1000);
+  
+}
